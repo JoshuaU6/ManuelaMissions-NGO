@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const carouselSlides = [
   { url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80", caption: "Giving Children a Better Future" },
-  { url: "https://images.unsplash.com/photo-1541802645635-11f2286a7482?w=1400&q=80", caption: "Building Stronger Communities" },
+  { url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80", caption: "Building Stronger Communities" },
   { url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7?w=1400&q=80", caption: "Volunteers Making a Difference" },
   { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1400&q=80", caption: "Delivering Aid Where It's Needed Most" },
   { url: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1400&q=80", caption: "Healthcare for Every Community" },
