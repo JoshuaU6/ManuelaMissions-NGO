@@ -12,7 +12,7 @@ const carouselSlides = [
   { url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80", caption: "Giving Children a Better Future" },
   { url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1400&q=80", caption: "Building Stronger Communities" },
   { url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7?w=1400&q=80", caption: "Volunteers Making a Difference" },
-  { url: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=1400&q=80", caption: "Delivering Aid Where It's Needed Most" },
+  { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1400&q=80", caption: "Delivering Aid Where It's Needed Most" },
   { url: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1400&q=80", caption: "Healthcare for Every Community" },
   { url: "https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?w=1400&q=80", caption: "Education Opens Doors" },
   { url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80", caption: "Creating Lasting Impact" },
@@ -62,22 +62,6 @@ export default function Home() {
 
         {/* Dark overlay for text legibility */}
         <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/50 to-black/80" />
-
-        {/* Slide caption (bottom) */}
-        <div className="absolute bottom-24 left-0 right-0 z-20 flex justify-center">
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={currentSlide}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-white/70 text-sm md:text-base tracking-widest uppercase font-medium"
-            >
-              {carouselSlides[currentSlide].caption}
-            </motion.p>
-          </AnimatePresence>
-        </div>
 
         {/* Slide dots */}
         <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-center gap-2">

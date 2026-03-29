@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, Lock, ShieldCheck, Heart, ArrowRight } from "lucide-react";
+import { Copy, Lock, ShieldCheck } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 type Currency = 'NGN' | 'USD' | 'GBP';
@@ -221,7 +221,7 @@ export default function Donate() {
                   <div className="flex flex-wrap justify-center gap-6 pt-6 border-t border-border text-sm text-muted-foreground font-medium">
                     <span className="flex items-center gap-1.5"><Lock className="w-4 h-4 text-green-600" /> SSL Secured</span>
                     <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-blue-600" /> 256-bit Encryption</span>
-                    <span className="flex items-center gap-1.5"><Heart className="w-4 h-4 text-red-500" /> Safe & Trusted</span>
+                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-green-600" /> Safe & Trusted</span>
                   </div>
                 </div>
               </CardContent>
@@ -231,8 +231,8 @@ export default function Donate() {
           {/* Right Sidebar - Impact Equivalents */}
           <div className="lg:w-80 hidden lg:block space-y-6">
             <div className="sticky top-28">
-              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
-                <Heart className="w-6 h-6 text-accent" /> Why Donate?
+              <h3 className="text-xl font-bold mb-6">
+                Why Donate?
               </h3>
               <div className="space-y-4">
                 {[
@@ -252,13 +252,10 @@ export default function Donate() {
                 ))}
               </div>
               
-              <div className="mt-8 bg-foreground text-white p-6 rounded-2xl relative overflow-hidden">
-                <div className="absolute -right-4 -bottom-4 opacity-10">
-                  <Heart className="w-32 h-32" />
-                </div>
-                <h4 className="font-bold text-lg mb-2 relative z-10">Transparency Promise</h4>
-                <p className="text-sm text-white/80 leading-relaxed relative z-10">
-                  92% of all donations go directly to funding our programs. We ensure maximum impact for every currency donated.
+              <div className="mt-8 bg-foreground text-white p-6 rounded-2xl">
+                <h4 className="font-bold text-lg mb-2">Transparency Promise</h4>
+                <p className="text-sm text-white/80 leading-relaxed">
+                  100% of all donations go directly to funding our programs. We ensure maximum impact for every currency donated.
                 </p>
               </div>
             </div>

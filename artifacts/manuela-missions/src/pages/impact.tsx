@@ -10,12 +10,12 @@ const successStories = [
   },
   {
     title: "Clean Water Initiative",
-    image: "https://images.unsplash.com/photo-1542360216-563b71f92e21?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1538300342682-cf57afb97285?w=800&q=80",
     desc: "By installing solar-powered water pumps in 5 drought-stricken regions, we reduced waterborne diseases by 80% and freed up hours for women to pursue businesses."
   },
   {
     title: "Grace's Tailoring Business",
-    image: "https://images.unsplash.com/photo-1581404455160-c511394b9679?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1607748862156-7c548e7e98f4?w=800&q=80",
     desc: "Through our micro-finance program, Grace received a sewing machine and training. Today, she employs three others and easily affords her children's tuition."
   }
 ];
