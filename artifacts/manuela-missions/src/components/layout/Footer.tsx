@@ -9,9 +9,8 @@ export function Footer() {
           
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
               <img src="/logo.png" alt="Manuela Missions" className="h-36 w-auto" />
-              <span className="text-xl font-bold tracking-tight">Manuela Missions</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">
               Transforming Lives. Building Futures. We are a global humanitarian organization bringing hope, health, and opportunity to communities around the world.
