@@ -49,7 +49,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
-            <img src="/logo.png" alt="Manuela Missions" className="h-36 w-auto" />
+            <img src="/logo.png" alt="Manuela Missions" className="h-16 w-auto object-contain" />
           </Link>
 
           {/* Desktop Nav */}
