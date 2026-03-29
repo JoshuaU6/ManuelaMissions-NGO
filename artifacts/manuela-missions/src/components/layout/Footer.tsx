@@ -10,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Manuela Missions" className="h-12 w-auto" />
+              <img src="/logo.png" alt="Manuela Missions" className="h-60 w-auto" />
               <span className="text-xl font-bold tracking-tight">Manuela Missions</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">

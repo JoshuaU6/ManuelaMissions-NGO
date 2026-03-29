@@ -49,7 +49,7 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1 shrink-0">
-            <img src="/logo.png" alt="Manuela Missions" className="h-12 w-auto" />
+            <img src="/logo.png" alt="Manuela Missions" className="h-60 w-auto" />
             <span
               className={`text-base font-bold tracking-tight transition-colors hidden sm:block ${
                 isTransparent ? "text-white" : "text-foreground"
