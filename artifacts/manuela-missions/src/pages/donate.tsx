@@ -6,8 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Copy, Lock, ShieldCheck } from "lucide-react";
+import { Copy, Lock, ShieldCheck, CreditCard } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
 
 type Currency = 'NGN' | 'USD' | 'GBP';
 type Frequency = 'one-time' | 'monthly';
@@ -24,21 +25,20 @@ const bankDetails = {
   NGN: [
     { label: "Bank", value: "GTBank" },
     { label: "Account Name", value: "Manuela Missions" },
-    { label: "Account No", value: "0123456789" },
+    { label: "Account No", value: "0267551799" },
   ],
   USD: [
-    { label: "Bank", value: "International Bank" },
+    { label: "Bank", value: "GTBank" },
     { label: "Account Name", value: "Manuela Missions" },
-    { label: "SWIFT", value: "MMNG0001" },
-    { label: "IBAN", value: "US12345678901234" },
+    { label: "Account No", value: "0267551823" },
   ],
   GBP: [
-    { label: "Bank", value: "Barclays Bank UK" },
-    { label: "Account Name", value: "Manuela Missions" },
-    { label: "Sort Code", value: "20-00-00" },
-    { label: "Account No", value: "12345678" },
-  ]
+    { label: "Contact", value: "donations@manuelamissions.com" },
+    { label: "Note", value: "Email us for GBP bank transfer details" },
+  ],
 };
+
+const FLW_PUBLIC_KEY = import.meta.env.VITE_FLUTTERWAVE_PUBLIC_KEY || "";
 
 export default function Donate() {
   const [currency, setCurrency] = useState<Currency>('USD');
@@ -46,7 +46,32 @@ export default function Donate() {
   const [customAmount, setCustomAmount] = useState<string>("");
   const [frequency, setFrequency] = useState<Frequency>('one-time');
   const [isAnonymous, setIsAnonymous] = useState(false);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const { toast } = useToast();
+
+  const finalAmount = amount > 0 ? amount : Number(customAmount) || 0;
+
+  const flwConfig = {
+    public_key: FLW_PUBLIC_KEY,
+    tx_ref: `MM-${Date.now()}`,
+    amount: finalAmount,
+    currency: currency,
+    payment_options: "card,banktransfer,ussd",
+    customer: {
+      email: isAnonymous ? "anonymous@manuelamissions.com" : (email || "donor@manuelamissions.com"),
+      phone_number: "",
+      name: isAnonymous ? "Anonymous Donor" : (`${firstName} ${lastName}`.trim() || "Generous Donor"),
+    },
+    customizations: {
+      title: "Manuela Missions NGO",
+      description: `${frequency === 'monthly' ? 'Monthly ' : ''}Donation to Manuela Missions`,
+      logo: `${window.location.origin}/logo.png`,
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(flwConfig);
 
   const handleAmountClick = (val: number) => {
     setAmount(val);
@@ -55,7 +80,7 @@ export default function Donate() {
 
   const handleCustomAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCustomAmount(e.target.value);
-    setAmount(0); // clear selected preset
+    setAmount(0);
   };
 
   const copyToClipboard = (text: string, label: string) => {
@@ -67,16 +92,45 @@ export default function Donate() {
     });
   };
 
-  const handleProcessDonation = (e: React.FormEvent) => {
+  const handleCardPayment = (e: React.FormEvent) => {
     e.preventDefault();
-    const finalAmount = amount > 0 ? amount : Number(customAmount);
     if (!finalAmount || finalAmount <= 0) {
       toast({ title: "Error", description: "Please enter a valid amount.", variant: "destructive" });
       return;
     }
-    toast({
-      title: "Processing Donation...",
-      description: `Thank you for choosing to donate ${currencySymbols[currency]}${finalAmount}. Redirecting to secure gateway...`,
+    if (!FLW_PUBLIC_KEY) {
+      toast({ title: "Configuration Error", description: "Payment gateway not configured. Please use bank transfer.", variant: "destructive" });
+      return;
+    }
+    if (!isAnonymous && !email) {
+      toast({ title: "Email required", description: "Please enter your email address to proceed.", variant: "destructive" });
+      return;
+    }
+
+    handleFlutterPayment({
+      callback: (response) => {
+        closePaymentModal();
+        if (response.status === "successful" || response.status === "completed") {
+          toast({
+            title: "Thank you for your donation!",
+            description: `Your ${currencySymbols[currency]}${finalAmount.toLocaleString()} donation was successful. Transaction ID: ${response.transaction_id}`,
+            duration: 6000,
+          });
+        } else {
+          toast({
+            title: "Payment not completed",
+            description: "Your payment was not completed. Please try again or use bank transfer.",
+            variant: "destructive",
+          });
+        }
+      },
+      onClose: () => {
+        toast({
+          title: "Payment window closed",
+          description: "You closed the payment window. Your donation was not processed.",
+          duration: 3000,
+        });
+      },
     });
   };
 
@@ -89,7 +143,7 @@ export default function Donate() {
 
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row gap-10">
-          
+
           {/* Main Form Area */}
           <div className="flex-1">
             <Card className="border-none shadow-2xl overflow-hidden rounded-3xl">
@@ -102,8 +156,8 @@ export default function Donate() {
                   </div>
                   <div className="flex bg-muted">
                     {(['NGN', 'USD', 'GBP'] as Currency[]).map(curr => (
-                      <button 
-                        key={curr} 
+                      <button
+                        key={curr}
                         onClick={() => { setCurrency(curr); setAmount(amounts[curr][2]); setCustomAmount(""); }}
                         className={`px-6 py-4 font-bold transition-colors ${currency === curr ? 'bg-primary text-white' : 'text-muted-foreground hover:text-foreground hover:bg-black/5'}`}
                       >
@@ -119,8 +173,8 @@ export default function Donate() {
                     <Label className="text-lg mb-4 block">Select Amount ({currency})</Label>
                     <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                       {amounts[currency].map(val => (
-                        <Button 
-                          key={val} 
+                        <Button
+                          key={val}
                           variant={amount === val ? "default" : "outline"}
                           className={`h-14 text-lg font-bold ${amount === val ? 'bg-primary border-primary' : 'border-border text-foreground hover:border-primary/50'}`}
                           onClick={() => handleAmountClick(val)}
@@ -131,9 +185,9 @@ export default function Donate() {
                     </div>
                     <div className="relative">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground font-bold">{currencySymbols[currency]}</span>
-                      <Input 
-                        type="number" 
-                        placeholder="Custom Amount" 
+                      <Input
+                        type="number"
+                        placeholder="Custom Amount"
                         className="pl-8 h-14 text-lg bg-background border-border"
                         value={customAmount}
                         onChange={handleCustomAmountChange}
@@ -150,9 +204,18 @@ export default function Donate() {
 
                     {!isAnonymous && (
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4 animate-in fade-in slide-in-from-top-2">
-                        <div className="space-y-2"><Label>First Name</Label><Input placeholder="John" className="h-12" /></div>
-                        <div className="space-y-2"><Label>Last Name</Label><Input placeholder="Doe" className="h-12" /></div>
-                        <div className="space-y-2 sm:col-span-2"><Label>Email Address</Label><Input type="email" placeholder="john@example.com" className="h-12" /></div>
+                        <div className="space-y-2">
+                          <Label>First Name</Label>
+                          <Input placeholder="John" className="h-12" value={firstName} onChange={e => setFirstName(e.target.value)} />
+                        </div>
+                        <div className="space-y-2">
+                          <Label>Last Name</Label>
+                          <Input placeholder="Doe" className="h-12" value={lastName} onChange={e => setLastName(e.target.value)} />
+                        </div>
+                        <div className="space-y-2 sm:col-span-2">
+                          <Label>Email Address <span className="text-red-500">*</span></Label>
+                          <Input type="email" placeholder="john@example.com" className="h-12" value={email} onChange={e => setEmail(e.target.value)} required />
+                        </div>
                       </div>
                     )}
                     {isAnonymous && (
@@ -167,42 +230,66 @@ export default function Donate() {
                     <Label className="text-lg mb-4 block">Payment Method</Label>
                     <Tabs defaultValue="card" className="w-full">
                       <TabsList className="grid w-full grid-cols-2 h-14 bg-muted mb-6">
-                        <TabsTrigger value="card" className="data-[state=active]:bg-white h-10 text-base">Credit/Debit Card</TabsTrigger>
+                        <TabsTrigger value="card" className="data-[state=active]:bg-white h-10 text-base">Card / Online Payment</TabsTrigger>
                         <TabsTrigger value="bank" className="data-[state=active]:bg-white h-10 text-base">Bank Transfer</TabsTrigger>
                       </TabsList>
-                      
-                      <TabsContent value="card" className="space-y-4">
-                        <form onSubmit={handleProcessDonation}>
-                          <div className="space-y-4 bg-muted/30 p-6 rounded-xl border border-border/50">
-                            <div className="space-y-2">
-                              <Label>Card Number</Label>
-                              <Input placeholder="0000 0000 0000 0000" className="h-12 bg-white" required />
+
+                      <TabsContent value="card">
+                        <div className="space-y-5">
+                          {/* Flutterwave info badge */}
+                          <div className="flex items-center gap-3 bg-blue-50 border border-blue-200 rounded-xl p-4">
+                            <CreditCard className="w-5 h-5 text-blue-600 shrink-0" />
+                            <p className="text-sm text-blue-800">
+                              Secure payments powered by <strong>Flutterwave</strong>. Accepts card, bank transfer, USSD and more. Your details are never stored on our site.
+                            </p>
+                          </div>
+
+                          {/* Summary */}
+                          <div className="bg-muted/50 border border-border rounded-xl p-5 space-y-2">
+                            <div className="flex justify-between text-sm text-muted-foreground">
+                              <span>Donation type</span>
+                              <span className="font-medium text-foreground capitalize">{frequency} donation</span>
                             </div>
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="space-y-2"><Label>Expiry (MM/YY)</Label><Input placeholder="12/25" className="h-12 bg-white" required /></div>
-                              <div className="space-y-2"><Label>CVV</Label><Input placeholder="123" className="h-12 bg-white" required /></div>
+                            <div className="flex justify-between text-sm text-muted-foreground">
+                              <span>Currency</span>
+                              <span className="font-medium text-foreground">{currency}</span>
                             </div>
-                            <div className="space-y-2">
-                              <Label>Cardholder Name</Label>
-                              <Input placeholder="John Doe" className="h-12 bg-white" required />
+                            <div className="flex justify-between font-bold text-lg border-t border-border pt-2 mt-2">
+                              <span>Total</span>
+                              <span className="text-primary">{currencySymbols[currency]}{finalAmount > 0 ? finalAmount.toLocaleString() : "—"}</span>
                             </div>
                           </div>
-                          <Button type="submit" size="lg" className="w-full h-16 text-lg font-bold mt-6 bg-secondary hover:bg-secondary/90 text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex gap-2">
-                            <Lock className="w-5 h-5" /> Donate Securely
-                          </Button>
-                        </form>
+
+                          <form onSubmit={handleCardPayment}>
+                            <Button
+                              type="submit"
+                              size="lg"
+                              disabled={finalAmount <= 0}
+                              className="w-full h-16 text-lg font-bold bg-secondary hover:bg-secondary/90 text-white rounded-xl shadow-lg hover:shadow-xl transition-all flex gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              <Lock className="w-5 h-5" />
+                              Donate {finalAmount > 0 ? `${currencySymbols[currency]}${finalAmount.toLocaleString()}` : ""} Securely
+                            </Button>
+                          </form>
+                        </div>
                       </TabsContent>
 
                       <TabsContent value="bank">
                         <div className="bg-primary/5 p-6 rounded-xl border border-primary/20 space-y-4">
-                          <p className="text-sm text-muted-foreground mb-4">Please transfer your donation to the following {currency} account:</p>
+                          <p className="text-sm text-muted-foreground mb-4">
+                            Please transfer your donation to the following {currency} account:
+                          </p>
                           <div className="space-y-3">
                             {bankDetails[currency].map((detail, idx) => (
                               <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-lg border border-border">
                                 <span className="text-sm font-medium text-muted-foreground">{detail.label}</span>
                                 <div className="flex items-center gap-3">
                                   <span className="font-bold text-foreground">{detail.value}</span>
-                                  <button onClick={() => copyToClipboard(detail.value, detail.label)} className="text-primary hover:text-primary/70 bg-primary/10 p-1.5 rounded-md transition-colors" title="Copy">
+                                  <button
+                                    onClick={() => copyToClipboard(detail.value, detail.label)}
+                                    className="text-primary hover:text-primary/70 bg-primary/10 p-1.5 rounded-md transition-colors"
+                                    title="Copy"
+                                  >
                                     <Copy className="w-4 h-4" />
                                   </button>
                                 </div>
@@ -210,7 +297,7 @@ export default function Donate() {
                             ))}
                           </div>
                           <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800 flex gap-2">
-                            <strong>Note:</strong> After transfer, please email your proof of payment to donations@manuelamissions.com to get your receipt.
+                            <strong>Note:</strong> After transfer, please email your proof of payment to <strong>donations@manuelamissions.com</strong> to receive your receipt.
                           </div>
                         </div>
                       </TabsContent>
@@ -221,19 +308,17 @@ export default function Donate() {
                   <div className="flex flex-wrap justify-center gap-6 pt-6 border-t border-border text-sm text-muted-foreground font-medium">
                     <span className="flex items-center gap-1.5"><Lock className="w-4 h-4 text-green-600" /> SSL Secured</span>
                     <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-blue-600" /> 256-bit Encryption</span>
-                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-green-600" /> Safe & Trusted</span>
+                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-green-600" /> Powered by Flutterwave</span>
                   </div>
                 </div>
               </CardContent>
             </Card>
           </div>
 
-          {/* Right Sidebar - Impact Equivalents */}
+          {/* Right Sidebar */}
           <div className="lg:w-80 hidden lg:block space-y-6">
             <div className="sticky top-28">
-              <h3 className="text-xl font-bold mb-6">
-                Why Donate?
-              </h3>
+              <h3 className="text-xl font-bold mb-6">Why Donate?</h3>
               <div className="space-y-4">
                 {[
                   { cost: currency === 'USD' ? '$10' : currency === 'NGN' ? '₦5,000' : '£10', impact: "Feeds a child for an entire week" },
@@ -251,7 +336,7 @@ export default function Donate() {
                   </Card>
                 ))}
               </div>
-              
+
               <div className="mt-8 bg-foreground text-white p-6 rounded-2xl">
                 <h4 className="font-bold text-lg mb-2">Transparency Promise</h4>
                 <p className="text-sm text-white/80 leading-relaxed">
