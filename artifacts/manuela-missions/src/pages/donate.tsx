@@ -296,8 +296,8 @@ export default function Donate() {
                               </div>
                             ))}
                           </div>
-                          <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800 flex gap-2">
-                            <strong>Note:</strong> After transfer, please email your proof of payment to <strong>donations@manuelamissions.com</strong> to receive your receipt.
+                          <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
+                            After completing your transfer, please send your proof of payment to <strong>donations@manuelamissions.com</strong> and we will issue your receipt promptly.
                           </div>
                         </div>
                       </TabsContent>
