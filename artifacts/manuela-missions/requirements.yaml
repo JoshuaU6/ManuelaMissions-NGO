@@ -1,0 +1,12 @@
+packages:
+  "framer-motion": "For page transitions, scroll-triggered animations, and the hero/carousel effects"
+  "clsx": "Utility for constructing className strings conditionally"
+  "tailwind-merge": "Utility for merging tailwind classes safely"
+  "react-countup": "For animated number counters in the impact stats section"
+
+images: []
+
+notes:
+  - "No backend API integration required. All state (like the donate form) is managed locally for presentation."
+  - "Using wouter for routing."
+  - "Standard shadcn components from the provided workspace structure will be utilized."

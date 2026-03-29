@@ -1,0 +1,77 @@
+Build me a full, modern, multi-page NGO website for "Manuela Missions" — a Global NGO organisation. The website should be professional, visually captivating, and designed to drive donations. Use HTML, CSS, and JavaScript (vanilla or with a lightweight framework like Alpine.js if needed). Structure it as a multi-page site with a shared navbar and footer.
+
+---
+
+🎨 BRAND & DESIGN
+- Colours: White, Royal Blue (#003580), Red (#CC0000), Black, and Royal Purple (#6B21A8)
+- Use a clean, modern sans-serif font (e.g. Inter or Poppins via Google Fonts)
+- Design must feel global, trustworthy, and emotionally compelling — like UNICEF or Save the Children
+- Use subtle animations, smooth scroll, and hover effects throughout
+- Fully responsive (mobile, tablet, desktop)
+
+---
+
+📄 PAGES TO BUILD
+
+1. **Home (index.html)**
+   - Sticky top navigation bar with logo text "Manuela Missions", nav links (Home, About, Programs, Impact, Donate, Contact), and a "Donate Now" CTA button in Royal Purple
+   - Hero section: Full-width video or animated gradient background with a bold headline like "Transforming Lives. Building Futures." and a subheading about global humanitarian work. Two CTA buttons: "Donate Now" and "Learn More"
+   - **Photo Carousel** (8 slides): Auto-playing, full-width carousel with smooth transitions. Use high-quality placeholder NGO images from Unsplash (humanitarian, community, children, health, education themes). Each slide has an overlay caption. Use these Unsplash URLs for placeholders:
+     - https://images.unsplash.com/photo-1488521787991-ed7bbaae773c (children)
+     - https://images.unsplash.com/photo-1509099836639-18ba1795216d (community)
+     - https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7 (volunteers)
+     - https://images.unsplash.com/photo-1469571486292-0ba58a3f068b (aid)
+     - https://images.unsplash.com/photo-1579621970795-87facc2f976d (health)
+     - https://images.unsplash.com/photo-1444210971048-6130cf0c46cf (education)
+     - https://images.unsplash.com/photo-1600880292203-757bb62b4baf (impact)
+     - https://images.unsplash.com/photo-1593113598332-cd288d649433 (global)
+   - **Impact Stats Bar**: Animated counters — e.g. "12,000+ Lives Impacted", "18 Countries", "500+ Volunteers", "10 Years of Service"
+   - **Mission Statement Section**: Two columns — bold headline + paragraph about Manuela Missions' vision and global reach
+   - **Programs/Focus Areas Section**: 3–4 cards (e.g. Education, Healthcare, Food Relief, Women Empowerment) with icons and short descriptions
+   - **Testimonials/Stories Section**: Quote carousel with photo, name, and location of beneficiaries
+   - **Donate CTA Banner**: Full-width bold section — "Your donation changes lives" with a "Donate Now" button
+   - **Partners/Supporters Logo Strip**: Placeholder logos in a horizontal scroll
+   - **Footer**: Logo, mission tagline, quick links, social media icons (Facebook, Instagram, X/Twitter, LinkedIn), contact email, and copyright
+
+2. **About Page (about.html)**
+   - Hero banner with page title
+   - Who We Are, Our Mission, Our Vision sections
+   - Team section with placeholder cards
+   - Timeline of milestones
+
+3. **Programs Page (programs.html)**
+   - Hero banner
+   - Detailed program cards with icons, descriptions, and "Learn More" expandable sections
+
+4. **Impact Page (impact.html)**
+   - Stats, maps placeholder, success stories, photo gallery grid
+
+5. **Donate Page (donate.html)** ← MOST IMPORTANT
+   - Hero section: "Make a Difference Today"
+   - **Currency Selector**: Toggle between NGN (₦), USD ($), GBP (£)
+   - **Donation Amount Selector**: Preset buttons (e.g. ₦5,000 / $10 / £10, ₦10,000 / $25 / £25, ₦50,000 / $100 / £100, ₦100,000 / $250 / £250) + custom amount input
+   - **Donation Frequency**: One-time or Monthly toggle
+   - **Anonymity Toggle**: Checkbox — "Donate Anonymously" — if unchecked, show name/email/phone fields; if checked, hide them and show a message "Your donation will be recorded anonymously."
+   - **Payment Method Tabs**: Two tabs:
+     - **Card Payment**: Fields for Card Number, Expiry, CVV, Cardholder Name. Show card brand icons (Visa, Mastercard). Submit button: "Donate Securely"
+     - **Bank Transfer**: Show bank account details dynamically based on selected currency:
+       - NGN: "Bank: GTBank | Account Name: Manuela Missions | Account No: 0123456789"
+       - USD: "Bank: [International Bank] | Account Name: Manuela Missions | SWIFT: XXXXXXXX | IBAN: XXXXXXXX"
+       - GBP: "Bank: [UK Bank] | Account Name: Manuela Missions | Sort Code: XX-XX-XX | Account No: XXXXXXXX"
+     - Include a "Copy Details" button for each field
+     - Add note: "After transfer, please email proof to donations@manuelamissions.org"
+   - Security badges: SSL Secured, 256-bit Encryption icons
+   - "Why Donate" sidebar with impact equivalents (e.g. "$25 feeds a family for a week")
+
+6. **Contact Page (contact.html)**
+   - Contact form (Name, Email, Subject, Message)
+   - Address, Phone, Email details (use placeholders)
+   - Embedded Google Maps placeholder
+
+---
+
+🔧 TECHNICAL REQUIREMENTS
+- All pages share the same navbar and footer (use JS includes or repeat the HTML)
+- Smooth scroll behaviour enabled globally
+- Active nav link highlighting based on current page
+- CSS custom properties (varia
