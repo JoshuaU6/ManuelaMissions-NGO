@@ -49,7 +49,7 @@ export default function Impact() {
             <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1600&q=80')] bg-cover bg-center"></div>
             <div className="relative z-10 flex flex-col items-center">
               <MapPin className="w-16 h-16 text-primary mb-4 animate-bounce" />
-              <p className="text-2xl font-bold text-foreground">Active in 18 Countries</p>
+              <p className="text-2xl font-bold text-foreground">Active in 6+ Countries</p>
               <p className="text-muted-foreground mt-2">Across Africa, South America, and Southeast Asia</p>
             </div>
           </div>

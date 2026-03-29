@@ -90,7 +90,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Call Us</h4>
-                  <p className="text-muted-foreground leading-relaxed">+234 800 123 4567<br/>Mon-Fri, 9am - 5pm GMT</p>
+                  <p className="text-muted-foreground leading-relaxed">+234 903 745 4858<br/>Mon-Fri, 9am - 5pm GMT</p>
                 </div>
               </CardContent>
             </Card>
@@ -102,7 +102,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Email Us</h4>
-                  <p className="text-muted-foreground leading-relaxed">info@manuelamissions.org<br/>donations@manuelamissions.org</p>
+                  <p className="text-muted-foreground leading-relaxed">info@manuelamissions.com<br/>donations@manuelamissions.com</p>
                 </div>
               </CardContent>
             </Card>

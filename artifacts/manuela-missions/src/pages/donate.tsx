@@ -210,7 +210,7 @@ export default function Donate() {
                             ))}
                           </div>
                           <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800 flex gap-2">
-                            <strong>Note:</strong> After transfer, please email your proof of payment to donations@manuelamissions.org to get your receipt.
+                            <strong>Note:</strong> After transfer, please email your proof of payment to donations@manuelamissions.com to get your receipt.
                           </div>
                         </div>
                       </TabsContent>

@@ -63,7 +63,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To empower underserved communities globally through sustainable access to quality education, essential healthcare, and economic opportunity, fostering environments where individuals can break the cycle of poverty.
+                To bring succor and restore God's plan to the needy — 2 Corinthians 1:3–6. We deliver hope and healing through education, healthcare, food relief, and women's empowerment programs across Africa and beyond.
               </p>
             </div>
             <div className="bg-white p-10 rounded-3xl shadow-lg border border-border/50 hover:shadow-xl transition-shadow">
@@ -72,7 +72,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                A world where geographical birth lottery does not determine human potential. We envision thriving, self-sustaining communities free from extreme poverty, where dignity, health, and education are universally accessible rights.
+                To graciously care for abused women and other vulnerable persons — Matthew 9:35–38. We see communities transformed by compassion, where every individual — regardless of background — can live with dignity and purpose.
               </p>
             </div>
           </div>
