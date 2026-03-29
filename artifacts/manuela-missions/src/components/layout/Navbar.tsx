@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -48,14 +48,10 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0">
-            <Globe
-              className={`w-7 h-7 transition-colors ${
-                isTransparent ? "text-white" : "text-primary"
-              }`}
-            />
+          <Link href="/" className="flex items-center gap-1 shrink-0">
+            <img src="/logo.png" alt="Manuela Missions" className="h-12 w-auto" />
             <span
-              className={`text-lg font-bold tracking-tight transition-colors ${
+              className={`text-base font-bold tracking-tight transition-colors hidden sm:block ${
                 isTransparent ? "text-white" : "text-foreground"
               }`}
             >

@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Facebook, Instagram, Twitter, Linkedin, Globe, Mail, Phone } from "lucide-react";
+import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <Globe className="w-8 h-8 text-primary" />
+              <img src="/logo.png" alt="Manuela Missions" className="h-12 w-auto" />
               <span className="text-xl font-bold tracking-tight">Manuela Missions</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">

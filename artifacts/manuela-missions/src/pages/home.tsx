@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const carouselSlides = [
   { url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80", caption: "Giving Children a Better Future" },
-  { url: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=1400&q=80", caption: "Building Stronger Communities" },
+  { url: "https://images.unsplash.com/photo-1541802645635-11f2286a7482?w=1400&q=80", caption: "Building Stronger Communities" },
   { url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7?w=1400&q=80", caption: "Volunteers Making a Difference" },
   { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1400&q=80", caption: "Delivering Aid Where It's Needed Most" },
   { url: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1400&q=80", caption: "Healthcare for Every Community" },
@@ -25,7 +25,6 @@ const testimonials = [
   { name: "John Mwangi", location: "Nairobi, Kenya", avatar: "https://i.pravatar.cc/80?img=3", text: "The food programs sustained my family during the drought. Manuela Missions truly cares about people like us." },
 ];
 
-const partners = ["UNICEF", "WHO", "Red Cross", "USAID", "Gates Foundation", "Oxfam", "World Bank", "Amnesty Int."];
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -280,23 +279,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7. Partners Logo Strip */}
-      <section className="py-10 md:py-12 bg-white border-b border-border overflow-hidden flex flex-col items-center">
-        <p className="text-xs md:text-sm font-bold text-muted-foreground uppercase tracking-widest mb-6 md:mb-8">Our Partners & Supporters</p>
-        <div className="flex gap-10 md:gap-12 w-max animate-[slide_30s_linear_infinite] px-6">
-          {[...partners, ...partners].map((partner, i) => (
-            <div key={i} className="flex items-center justify-center text-lg md:text-xl font-black text-muted-foreground/40 hover:text-primary transition-colors cursor-default whitespace-nowrap">
-              {partner}
-            </div>
-          ))}
-        </div>
-        <style>{`
-          @keyframes slide {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-        `}</style>
-      </section>
     </Layout>
   );
 }
