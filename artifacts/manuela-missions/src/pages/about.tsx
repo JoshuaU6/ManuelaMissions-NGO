@@ -1,22 +1,33 @@
 import { Layout } from "@/components/layout/Layout";
-import { Users, Target, Shield, ArrowRight } from "lucide-react";
+import { Target, Shield } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 const team = [
-  { name: "Dr. Amelia Foster", role: "Founder & CEO", avatar: "https://i.pravatar.cc/200?img=10" },
-  { name: "James Okonkwo", role: "Director of Programs", avatar: "https://i.pravatar.cc/200?img=11" },
-  { name: "Sarah Chen", role: "Head of Operations", avatar: "https://i.pravatar.cc/200?img=12" },
-  { name: "Michael Adebayo", role: "Head of Partnerships", avatar: "https://i.pravatar.cc/200?img=13" },
+  { name: "Becky Unoarumhi", role: "Founder & CEO", initials: "BU", photo: null },
+  { name: "Prof. Ebele Uche", role: "Health Consultant", initials: "EU", photo: null },
+  { name: "Dede Assam", role: "Head of Operations", initials: "DA", photo: null },
+  { name: "Joshua Unoarumhi", role: "Chief Technology Officer", initials: "JU", photo: null },
+  { name: "Grace Izinrein", role: "Head of Finance", initials: "GI", photo: null },
+  { name: "Debra Unoarumhi", role: "Brand & Social Media Manager", initials: "DU", photo: null },
+];
+
+const avatarColors = [
+  "from-[#003580] to-[#0055cc]",
+  "from-[#6B21A8] to-[#9333ea]",
+  "from-[#CC0000] to-[#ef4444]",
+  "from-[#003580] to-[#6B21A8]",
+  "from-[#6B21A8] to-[#CC0000]",
+  "from-[#003580] to-[#CC0000]",
 ];
 
 const timeline = [
-  { year: "2014", title: "Organization Founded", desc: "Started as a small community initiative." },
+  { year: "2014", title: "Organization Founded", desc: "Started as a small community initiative in Lagos, Nigeria." },
   { year: "2016", title: "First International Program", desc: "Launched education programs in West Africa." },
-  { year: "2018", title: "Reached 5,000 Beneficiaries", desc: "Expanded healthcare and food relief efforts." },
-  { year: "2020", title: "Expanded to 10 Countries", desc: "Global pandemic response initiatives." },
-  { year: "2022", title: "500 Volunteers Worldwide", desc: "Built a robust global volunteer network." },
-  { year: "2024", title: "12,000+ Lives Impacted", desc: "Continuing to grow and transform lives." },
+  { year: "2018", title: "Reached 5,000 Beneficiaries", desc: "Expanded healthcare and food relief efforts across the region." },
+  { year: "2020", title: "Pandemic Relief Response", desc: "Mobilized resources to support vulnerable families during global pandemic." },
+  { year: "2022", title: "500 Volunteers Worldwide", desc: "Built a robust global volunteer and partner network." },
+  { year: "2024", title: "12,000+ Lives Impacted", desc: "Continuing to grow, transform, and restore lives." },
 ];
 
 export default function About() {
@@ -43,10 +54,9 @@ export default function About() {
           </div>
           <div className="flex-1 relative">
             <div className="absolute inset-0 bg-primary/10 rounded-3xl transform translate-x-4 translate-y-4"></div>
-            {/* about page group working together */}
-            <img 
-              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" 
-              alt="Our team in action" 
+            <img
+              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80"
+              alt="Our team in action"
               className="relative rounded-3xl shadow-xl w-full h-auto object-cover"
             />
           </div>
@@ -79,20 +89,26 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Leadership Team */}
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our Leadership Team</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto mb-16">Dedicated professionals guiding our mission with expertise and compassion.</p>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <p className="text-muted-foreground max-w-2xl mx-auto mb-16">Dedicated professionals guiding our mission with expertise, compassion, and purpose.</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((member, i) => (
-              <div key={i} className="group">
-                <div className="relative mb-6 mx-auto w-48 h-48 rounded-full overflow-hidden shadow-lg border-4 border-white group-hover:border-primary transition-colors">
-                  <img src={member.avatar} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div key={i} className="group flex flex-col items-center">
+                <div className="relative mb-6 w-48 h-48 rounded-full overflow-hidden shadow-lg border-4 border-white group-hover:border-primary transition-colors duration-300">
+                  {member.photo ? (
+                    <img src={member.photo} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                  ) : (
+                    <div className={`w-full h-full bg-gradient-to-br ${avatarColors[i]} flex items-center justify-center`}>
+                      <span className="text-white text-4xl font-bold tracking-wide">{member.initials}</span>
+                    </div>
+                  )}
                 </div>
                 <h4 className="text-xl font-bold text-foreground">{member.name}</h4>
-                <p className="text-primary font-medium">{member.role}</p>
+                <p className="text-primary font-medium mt-1">{member.role}</p>
               </div>
             ))}
           </div>
