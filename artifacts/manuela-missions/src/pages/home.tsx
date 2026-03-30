@@ -9,14 +9,13 @@ import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 
 const carouselSlides = [
-  { url: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1400&q=80", caption: "Giving Children a Better Future" },
-  { url: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1400&q=80", caption: "Building Stronger Communities" },
-  { url: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7?w=1400&q=80", caption: "Volunteers Making a Difference" },
-  { url: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=1400&q=80", caption: "Delivering Aid Where It's Needed Most" },
-  { url: "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=1400&q=80", caption: "Healthcare for Every Community" },
-  { url: "https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?w=1400&q=80", caption: "Education Opens Doors" },
-  { url: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1400&q=80", caption: "Creating Lasting Impact" },
-  { url: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=1400&q=80", caption: "Global Reach, Local Impact" },
+  { url: "/photo1.jpg", caption: "Skills Training for Women" },
+  { url: "/photo2.jpg", caption: "Empowering Through Education" },
+  { url: "/photo3.jpg", caption: "Community Voices" },
+  { url: "/photo4.jpg", caption: "Partners in Purpose" },
+  { url: "/photo5.jpg", caption: "Knowledge Shared, Lives Changed" },
+  { url: "/photo6.jpg", caption: "Women Coming Together" },
+  { url: "/photo7.jpg", caption: "Engaged and Inspired" },
 ];
 
 const testimonials = [

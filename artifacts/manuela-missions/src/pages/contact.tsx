@@ -77,8 +77,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Global Headquarters</h4>
-                  <p className="text-muted-foreground leading-relaxed">25 Mission Street<br/>Lagos, Nigeria</p>
-                  <p className="text-xs text-muted-foreground mt-2 italic">*Regional offices in London and New York</p>
+                  <p className="text-muted-foreground leading-relaxed">57, Nuru Oniwo Street<br/>Aguda, Surulere, Lagos</p>
                 </div>
               </CardContent>
             </Card>
@@ -90,7 +89,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-bold text-lg mb-1">Call Us</h4>
-                  <p className="text-muted-foreground leading-relaxed">+234 903 745 4858<br/>Mon-Fri, 9am - 5pm GMT</p>
+                  <p className="text-muted-foreground leading-relaxed">+234 802 944 0240<br/>Mon-Fri, 9am - 5pm WAT</p>
                 </div>
               </CardContent>
             </Card>
@@ -122,7 +121,7 @@ export default function Contact() {
                   <div className="relative z-10 text-center bg-white p-6 rounded-2xl shadow-lg border border-border animate-in slide-in-from-bottom-4 fade-in duration-700">
                     <MapPin className="w-12 h-12 text-primary mx-auto mb-3" />
                     <h3 className="font-bold text-xl text-foreground">Our Location</h3>
-                    <p className="text-muted-foreground mt-1">25 Mission Street, Lagos</p>
+                    <p className="text-muted-foreground mt-1">57, Nuru Oniwo Street, Aguda, Surulere, Lagos</p>
                     <Button variant="outline" size="sm" className="mt-4 border-primary text-primary hover:bg-primary hover:text-white">
                       Get Directions
                     </Button>

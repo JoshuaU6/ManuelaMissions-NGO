@@ -21,14 +21,13 @@ const successStories = [
 ];
 
 const gallery = [
-  "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80",
-  "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80",
-  "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b7?w=600&q=80",
-  "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=600&q=80",
-  "https://images.unsplash.com/photo-1579621970795-87facc2f976d?w=600&q=80",
-  "https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?w=600&q=80",
-  "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",
-  "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=600&q=80",
+  "/photo1.jpg",
+  "/photo2.jpg",
+  "/photo3.jpg",
+  "/photo4.jpg",
+  "/photo5.jpg",
+  "/photo6.jpg",
+  "/photo7.jpg",
 ];
 
 export default function Impact() {
