@@ -30,6 +30,14 @@ export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const { ref: statsRef, inView: statsInView } = useInView({ triggerOnce: true, threshold: 0.1 });
 
+  // Preload all carousel images immediately on mount
+  useEffect(() => {
+    carouselSlides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.url;
+    });
+  }, []);
+
   useEffect(() => {
     const slideInterval = setInterval(() => setCurrentSlide((s) => (s + 1) % carouselSlides.length), 5000);
     const testInterval = setInterval(() => setCurrentTestimonial((t) => (t + 1) % testimonials.length), 6000);
@@ -54,6 +62,8 @@ export default function Home() {
               src={carouselSlides[currentSlide].url}
               alt={carouselSlides[currentSlide].caption}
               className="w-full h-full object-cover"
+              fetchPriority={currentSlide === 0 ? "high" : "auto"}
+              loading="eager"
             />
           </motion.div>
         </AnimatePresence>
