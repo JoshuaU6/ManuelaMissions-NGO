@@ -33,6 +33,7 @@ const gallery = [
   "/photo5.jpg",
   "/photo6.jpg",
   "/photo7.jpg",
+  "/photo8.jpg",
 ];
 
 export default function Impact() {
