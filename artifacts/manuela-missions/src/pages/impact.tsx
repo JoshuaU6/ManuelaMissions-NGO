@@ -5,22 +5,22 @@ import { ZoomIn } from "lucide-react";
 const successStories = [
   {
     name: "Grace Izinren",
-    image: "/photo1.jpg",
+    image: "/story-grace.jpg",
     desc: "Grace came to Manuela Missions NGO at age 24. She was encouraged to go back to school, completed a diploma in Industrial Relations & Personnel Management, and later gained admission to Lagos State University to study Accounting. Grace is today a successful practicing accountant."
   },
   {
     name: "Olumide Salvage",
-    image: "/photo2.jpg",
+    image: "/story-olumide.jpg",
     desc: "After completing secondary school, Olumide applied for a pre-degree program at Obafemi Awolowo University but faced a serious financial challenge that threatened to kill his dream. Manuela Missions came to the rescue. Today, Olumide is a Mechanical Engineer."
   },
   {
     name: "Mercy Ukomadu",
-    image: "/photo3.jpg",
+    image: "/story-mercy.jpg",
     desc: "Manuela Missions met Mercy Samuel at age 13 and enrolled her in school through secondary level. Believing she was called into beauty and cosmetology, we sponsored her diploma at Elegant Twins Institute. Today, Mercy is a successful beautician with her own thriving establishment."
   },
   {
     name: "Adanne Amogu",
-    image: "/photo4.jpg",
+    image: "/story-adanne.jpg",
     desc: "Adanne dropped out of school due to lack of funds to continue her education. Manuela Missions stepped in, encouraged her, and supported her return to school. Adanne is presently a 200-level student in a Nigerian higher institution, pursuing her dreams."
   }
 ];
