@@ -19,9 +19,10 @@ const carouselSlides = [
 ];
 
 const testimonials = [
-  { name: "Amara Diallo", location: "Dakar, Senegal", avatar: "https://i.pravatar.cc/80?img=1", text: "Thanks to Manuela Missions, my children now attend school and have access to clean water. Our lives have been completely transformed." },
-  { name: "Maria Santos", location: "Lagos, Nigeria", avatar: "https://i.pravatar.cc/80?img=2", text: "The healthcare clinic they built in our village has saved countless lives. I am forever grateful for their unwavering commitment." },
-  { name: "John Mwangi", location: "Nairobi, Kenya", avatar: "https://i.pravatar.cc/80?img=3", text: "The food programs sustained my family during the drought. Manuela Missions truly cares about people like us." },
+  { name: "Grace Izinren", location: "Lagos, Nigeria", avatar: "/story-grace.jpg", text: "Manuela Missions encouraged me to go back to school at age 24. I earned my diploma, gained admission to Lagos State University, and today I am a successful practicing accountant. They gave me my future back." },
+  { name: "Olumide Salvage", location: "Ile-Ife, Nigeria", avatar: "/story-olumide.jpg", text: "I had a serious financial challenge that threatened to end my education at OAU. Manuela Missions came to the rescue and made sure my dream survived. Today I am a Mechanical Engineer." },
+  { name: "Mercy Ukomadu", location: "Lagos, Nigeria", avatar: "/story-mercy.jpg", text: "I was just 13 when Manuela Missions found me and enrolled me in school. They later sponsored my diploma in cosmetology at Elegant Twins Institute. Today I own my own beauty establishment." },
+  { name: "Adanne Amogu", location: "Nigeria", avatar: "/story-adanne.jpg", text: "I dropped out of school because I could not afford to continue. Manuela Missions stepped in, encouraged me, and supported my return. I am now a 200-level university student pursuing my dreams." },
 ];
 
 
