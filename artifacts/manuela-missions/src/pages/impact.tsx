@@ -53,8 +53,8 @@ export default function Impact() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {successStories.map((story, i) => (
               <Card key={i} className="overflow-hidden border-none shadow-lg hover:shadow-xl transition-shadow group flex flex-col md:flex-row">
-                <div className="md:w-48 shrink-0 h-52 md:h-auto overflow-hidden">
-                  <img src={story.image} alt={story.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div className="md:w-48 shrink-0 h-64 md:h-auto overflow-hidden">
+                  <img src={story.image} alt={story.name} className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 </div>
                 <CardContent className="p-6 flex flex-col justify-center">
                   <h3 className="text-xl font-bold text-foreground mb-1">{story.name}</h3>
