@@ -193,7 +193,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { photo: "/photo2.jpg", accent: "#003580", title: "Quality Education", desc: "Providing educational resources, building schools, and training teachers in underserved communities." },
-              { photo: "/photo5.jpg", accent: "#6B21A8", title: "Healthcare Access", desc: "Delivering essential medical care, running mobile clinics, and supporting maternal health in remote areas." },
+              { photo: "/healthcare.jpg", accent: "#6B21A8", title: "Healthcare Access", desc: "Delivering essential medical care, running mobile clinics, and supporting maternal health in remote areas." },
               { photo: "/photo7.jpg", accent: "#CC0000", title: "Food Security", desc: "Fighting hunger with nutritious meal programs and implementing sustainable agricultural practices." },
               { photo: "/photo1.jpg", accent: "#003580", title: "Women Empowerment", desc: "Fostering economic independence through vocational training, microloans, and dedicated mentorship." }
             ].map((prog, i) => (
