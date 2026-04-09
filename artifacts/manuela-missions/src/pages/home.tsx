@@ -3,7 +3,7 @@ import { Link } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
-import { Heart, Globe, Users, Calendar, BookOpen, Utensils, Award, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { Heart, Globe, Users, Calendar, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -192,23 +192,29 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: BookOpen, title: "Quality Education", desc: "Providing educational resources, building schools, and training teachers in underserved communities." },
-              { icon: Heart, title: "Healthcare Access", desc: "Delivering essential medical care, running mobile clinics, and supporting maternal health in remote areas." },
-              { icon: Utensils, title: "Food Security", desc: "Fighting hunger with nutritious meal programs and implementing sustainable agricultural practices." },
-              { icon: Award, title: "Women Empowerment", desc: "Fostering economic independence through vocational training, microloans, and dedicated mentorship." }
+              { photo: "/photo2.jpg", accent: "#003580", title: "Quality Education", desc: "Providing educational resources, building schools, and training teachers in underserved communities." },
+              { photo: "/photo5.jpg", accent: "#6B21A8", title: "Healthcare Access", desc: "Delivering essential medical care, running mobile clinics, and supporting maternal health in remote areas." },
+              { photo: "/photo7.jpg", accent: "#CC0000", title: "Food Security", desc: "Fighting hunger with nutritious meal programs and implementing sustainable agricultural practices." },
+              { photo: "/photo1.jpg", accent: "#003580", title: "Women Empowerment", desc: "Fostering economic independence through vocational training, microloans, and dedicated mentorship." }
             ].map((prog, i) => (
-              <Card key={i} className="group border border-border/50 shadow-lg shadow-black/5 hover:shadow-xl hover:border-primary/20 transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6 md:p-8">
-                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 md:mb-6 group-hover:bg-primary group-hover:text-white transition-colors text-primary">
-                    <prog.icon className="w-6 h-6 md:w-7 md:h-7" />
-                  </div>
-                  <h3 className="text-lg md:text-xl font-bold mb-3 text-foreground">{prog.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-5 md:mb-6 text-sm md:text-base">{prog.desc}</p>
+              <div key={i} className="group flex flex-col rounded-2xl overflow-hidden border border-border/50 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-white">
+                <div className="relative h-44 overflow-hidden">
+                  <img
+                    src={prog.photo}
+                    alt={prog.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 h-1" style={{ backgroundColor: prog.accent }} />
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <h3 className="text-lg font-bold mb-2 text-foreground">{prog.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed text-sm flex-1 mb-4">{prog.desc}</p>
                   <Link href="/programs" className="text-sm font-semibold text-primary inline-flex items-center gap-1 group/link">
                     Learn more <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                   </Link>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
