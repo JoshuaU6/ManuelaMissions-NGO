@@ -4,12 +4,12 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 
 const team = [
-  { name: "Becky Unoarumhi", role: "Founder & CEO", initials: "BU", photo: null },
-  { name: "Prof. Ebele Uche", role: "Health Consultant", initials: "EU", photo: null },
-  { name: "Dede Assam", role: "Head of Operations", initials: "DA", photo: null },
-  { name: "Joshua Unoarumhi", role: "Chief Technology Officer", initials: "JU", photo: null },
-  { name: "Grace Izinrein", role: "Head of Finance", initials: "GI", photo: null },
-  { name: "Debra Unoarumhi", role: "Brand & Social Media Manager", initials: "DU", photo: null },
+  { name: "Becky Unoarumhi", role: "Founder & CEO", initials: "BU", photo: "/team-becky.jpg" },
+  { name: "Prof. Ebele Uche", role: "Health Consultant", initials: "EU", photo: "/team-ebele.jpg" },
+  { name: "Dede Assam", role: "Head of Operations", initials: "DA", photo: "/team-dede.jpg" },
+  { name: "Joshua Unoarumhi", role: "Chief Technology Officer", initials: "JU", photo: "/team-joshua.png" },
+  { name: "Grace Izinrein", role: "Head of Finance", initials: "GI", photo: "/team-grace.jpg" },
+  { name: "Debra Unoarumhi", role: "Brand & Social Media Manager", initials: "DU", photo: "/team-debra.jpg" },
 ];
 
 const avatarColors = [
