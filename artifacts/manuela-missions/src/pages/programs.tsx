@@ -1,5 +1,4 @@
 import { Layout } from "@/components/layout/Layout";
-import { BookOpen, Heart, Utensils, Award } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
@@ -7,9 +6,9 @@ import { Link } from "wouter";
 const programs = [
   {
     id: "education",
-    icon: BookOpen,
+    photo: "/photo2.jpg",
+    accent: "#003580",
     title: "Education Program",
-    color: "bg-blue-100 text-blue-700",
     desc: "Education is the most powerful weapon against poverty. We build schools, provide scholarships, and train teachers.",
     details: [
       { title: "School Building", content: "Constructing safe, modern classrooms in remote villages to ensure children don't have to walk miles for basic education." },
@@ -19,9 +18,9 @@ const programs = [
   },
   {
     id: "healthcare",
-    icon: Heart,
+    photo: "/healthcare.jpg",
+    accent: "#6B21A8",
     title: "Healthcare Access",
-    color: "bg-red-100 text-red-700",
     desc: "Basic healthcare is a human right. We operate mobile clinics and fund life-saving medical procedures.",
     details: [
       { title: "Mobile Clinics", content: "Deploying medical teams to hard-to-reach areas providing checkups, medicines, and emergency care." },
@@ -31,9 +30,9 @@ const programs = [
   },
   {
     id: "food",
-    icon: Utensils,
+    photo: "/photo7.jpg",
+    accent: "#CC0000",
     title: "Food Security & Relief",
-    color: "bg-green-100 text-green-700",
     desc: "No one should go to bed hungry. We provide emergency food aid and teach sustainable farming.",
     details: [
       { title: "Emergency Food Aid", content: "Distributing nutritious food packages during crises, natural disasters, and droughts." },
@@ -43,9 +42,9 @@ const programs = [
   },
   {
     id: "empowerment",
-    icon: Award,
+    photo: "/photo1.jpg",
+    accent: "#003580",
     title: "Women Empowerment",
-    color: "bg-purple-100 text-purple-700",
     desc: "When you empower a woman, you empower a nation. We offer vocational training and micro-loans.",
     details: [
       { title: "Vocational Training", content: "Teaching marketable skills like tailoring, coding, and crafts to create income avenues." },
@@ -69,10 +68,14 @@ export default function Programs() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
           {programs.map((program, idx) => (
             <div key={program.id} id={program.id} className={`flex flex-col gap-8 ${idx % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} items-start`}>
-              {/* Icon & Title block */}
+              {/* Photo block */}
               <div className="md:w-1/3 shrink-0 flex flex-col items-center md:items-start text-center md:text-left">
-                <div className={`w-20 h-20 rounded-3xl ${program.color} flex items-center justify-center mb-6 shadow-lg`}>
-                  <program.icon className="w-10 h-10" />
+                <div className="w-full rounded-2xl overflow-hidden shadow-lg mb-6" style={{ borderBottom: `4px solid ${program.accent}` }}>
+                  <img
+                    src={program.photo}
+                    alt={program.title}
+                    className="w-full h-48 object-cover"
+                  />
                 </div>
                 <h2 className="text-3xl font-bold text-foreground mb-4">{program.title}</h2>
                 <p className="text-muted-foreground">{program.desc}</p>
