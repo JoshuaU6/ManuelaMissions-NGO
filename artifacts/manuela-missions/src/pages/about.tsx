@@ -55,7 +55,7 @@ export default function About() {
           <div className="flex-1 relative">
             <div className="absolute inset-0 bg-primary/10 rounded-3xl transform translate-x-4 translate-y-4"></div>
             <img
-              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80"
+              src="/about-who-we-are.jpg"
               alt="Our team in action"
               className="relative rounded-3xl shadow-xl w-full h-auto object-cover"
             />
