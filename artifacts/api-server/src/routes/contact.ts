@@ -1,5 +1,5 @@
 import { Router } from "express";
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
 const router = Router();
 
@@ -11,32 +11,25 @@ router.post("/contact", async (req, res) => {
     return;
   }
 
-  const gmailUser = process.env["GMAIL_USER"];
-  const gmailPass = process.env["GMAIL_APP_PASSWORD"];
+  const apiKey = process.env["RESEND_API_KEY"];
 
-  if (!gmailUser || !gmailPass) {
+  if (!apiKey) {
     res.status(500).json({ error: "Email service is not configured." });
     return;
   }
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: gmailUser,
-      pass: gmailPass,
-    },
-  });
+  const resend = new Resend(apiKey);
 
   try {
-    await transporter.sendMail({
-      from: `"Manuela Missions Website" <${gmailUser}>`,
+    const { error } = await resend.emails.send({
+      from: "Manuela Missions Website <onboarding@resend.dev>",
       to: "info@manuelamissions.com",
       replyTo: email,
       subject: `[Contact Form] ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <div style="background: #003580; padding: 24px; border-radius: 8px 8px 0 0;">
-            <h2 style="color: white; margin: 0;">New Message from Manuela Missions Website</h2>
+            <h2 style="color: white; margin: 0;">New Message — Manuela Missions Website</h2>
           </div>
           <div style="background: #f9f9f9; padding: 24px; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 8px 8px;">
             <p><strong>Name:</strong> ${name}</p>
@@ -47,15 +40,21 @@ router.post("/contact", async (req, res) => {
             <p style="white-space: pre-wrap; color: #444;">${message}</p>
           </div>
           <p style="color: #999; font-size: 12px; margin-top: 16px; text-align: center;">
-            Sent via the Manuela Missions contact form — reply directly to this email to respond to ${name}.
+            Sent via the Manuela Missions contact form. Reply directly to respond to ${name}.
           </p>
         </div>
       `,
     });
 
+    if (error) {
+      console.error("Resend error:", error);
+      res.status(500).json({ error: "Failed to send message. Please try again." });
+      return;
+    }
+
     res.status(200).json({ success: true });
   } catch (err) {
-    console.error("Email send error:", err);
+    console.error("Contact route error:", err);
     res.status(500).json({ error: "Failed to send message. Please try again." });
   }
 });
