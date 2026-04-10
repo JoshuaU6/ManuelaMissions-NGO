@@ -11,9 +11,9 @@ const programs = [
     title: "Education Program",
     desc: "Education is the most powerful weapon against poverty. We build schools, provide scholarships, and train teachers.",
     details: [
-      { title: "School Building", content: "Constructing safe, modern classrooms in remote villages to ensure children don't have to walk miles for basic education." },
-      { title: "Scholarships", content: "Providing financial support for uniforms, books, and tuition to keep vulnerable children in school." },
-      { title: "Teacher Training", content: "Equipping local educators with modern teaching methodologies and resources to improve education quality." }
+      { title: "Scholarships", content: "Providing financial support for uniforms, books, and tuition to keep vulnerable children and young adults in school." },
+      { title: "Retention & Re-enrollment Support", content: "Helping students who have dropped out return to education and supporting those at risk of leaving with the resources they need to stay." },
+      { title: "Mentorship & Career Guidance", content: "Connecting students with mentors who guide them through their education journey and help them plan for a successful future." }
     ]
   },
   {
@@ -23,8 +23,8 @@ const programs = [
     title: "Healthcare Access",
     desc: "Basic healthcare is a human right. We operate mobile clinics and fund life-saving medical procedures.",
     details: [
-      { title: "Mobile Clinics", content: "Deploying medical teams to hard-to-reach areas providing checkups, medicines, and emergency care." },
-      { title: "Maternal Health", content: "Ensuring safe deliveries by providing prenatal care and equipping local birth attendants." },
+      { title: "General Health Clinics", content: "Deploying medical teams to underserved communities providing checkups, medicines, and essential healthcare to those who cannot afford it." },
+      { title: "Feminine & Maternal Health", content: "Supporting women through prenatal care, safe deliveries, and reproductive health education to protect mothers and newborns." },
       { title: "Vaccination Drives", content: "Partnering with global health organizations to deliver vital immunizations to children." }
     ]
   },
