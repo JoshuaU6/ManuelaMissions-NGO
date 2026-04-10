@@ -115,7 +115,7 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-purple-300">Building Futures.</span>
             </h1>
             <p className="text-base md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed drop-shadow">
-              We bring succor and restore hope to the needy — delivering healthcare, education, and empowerment to vulnerable communities around the world.
+              Sharing the love of Christ through practical support, bringing hope and change to lives around the world.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button asChild size="lg" className="w-full sm:w-auto bg-secondary hover:bg-secondary/90 text-white text-base md:text-lg px-8 h-12 md:h-14 rounded-xl shadow-lg shadow-secondary/30 hover:shadow-xl hover:-translate-y-1 transition-all">
@@ -167,10 +167,10 @@ export default function Home() {
             </div>
             <div className="flex-1">
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-3">
-                <strong className="text-foreground">Mission:</strong> To bring succor and restore God's plan to the needy — 2 Corinthians 1:3–6.
+                <strong className="text-foreground">Mission:</strong> To support people in need by meeting everyday needs and creating opportunities for a better future — through practical support, community programs, and compassionate care.
               </p>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
-                <strong className="text-foreground">Vision:</strong> To graciously care for abused women and other vulnerable persons, lifting communities out of poverty through sustainable programs in healthcare, education, and empowerment — Matthew 9:35–38.
+                <strong className="text-foreground">Vision:</strong> To be a global source of hope and transformation — seeing lives changed, communities strengthened, and the cycle of poverty broken through love, faith, and consistent support.
               </p>
               <Button asChild variant="link" className="px-0 text-primary font-semibold hover:no-underline group">
                 <Link href="/about" className="flex items-center gap-2">

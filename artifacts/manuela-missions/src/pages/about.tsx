@@ -9,7 +9,7 @@ const team = [
   { name: "Dede Assam", role: "Head of Operations", initials: "DA", photo: "/team-dede.jpg" },
   { name: "Joshua Unoarumhi", role: "Chief Technology Officer", initials: "JU", photo: "/team-joshua.png" },
   { name: "Grace Izinrein", role: "Head of Finance", initials: "GI", photo: "/team-grace.jpg" },
-  { name: "Debra Unoarumhi", role: "Brand & Social Media Manager", initials: "DU", photo: "/team-debra.jpg" },
+  { name: "Debra Unoarumhi", role: "Brand & Communications Lead", initials: "DU", photo: "/team-debra.jpg" },
 ];
 
 const avatarColors = [
@@ -46,10 +46,10 @@ export default function About() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground">Who We Are</h2>
             <div className="w-12 h-1 bg-primary rounded-full"></div>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              Manuela Missions was born from a simple belief: every human being deserves a chance to thrive. We are a passionate team of humanitarians, volunteers, and advocates working across the globe to dismantle the systemic barriers of poverty.
+              We are a charity that supports young adults, women, and families in need around the world. We provide practical help, support, and care to people facing difficult times.
             </p>
             <p className="text-lg text-muted-foreground leading-relaxed">
-              We don't just provide temporary relief; we invest in long-term infrastructure, education, and community empowerment to create lasting, generational change.
+              Our heart is to bring hope, restore dignity, and share the love of Christ in simple, meaningful ways.
             </p>
           </div>
           <div className="flex-1 relative">
@@ -73,7 +73,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Mission</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To bring succor and restore God's plan to the needy — 2 Corinthians 1:3–6. We deliver hope and healing through education, healthcare, food relief, and women's empowerment programs across Africa and beyond.
+                Our mission is to support people in need by meeting everyday needs and creating opportunities for a better future. We do this through practical support, community programs, and compassionate care, helping people overcome challenges and find hope in Christ.
               </p>
             </div>
             <div className="bg-white p-10 rounded-3xl shadow-lg border border-border/50 hover:shadow-xl transition-shadow">
@@ -82,7 +82,7 @@ export default function About() {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Our Vision</h3>
               <p className="text-muted-foreground leading-relaxed">
-                To graciously care for abused women and other vulnerable persons — Matthew 9:35–38. We see communities transformed by compassion, where every individual — regardless of background — can live with dignity and purpose.
+                Our vision is to be a global source of hope and transformation. We want to see lives changed, communities strengthened, and the cycle of poverty broken through love, faith, and consistent support.
               </p>
             </div>
           </div>
