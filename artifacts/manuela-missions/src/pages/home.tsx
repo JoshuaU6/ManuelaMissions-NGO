@@ -162,7 +162,7 @@ export default function Home() {
             <div className="flex-1 space-y-5">
               <div className="w-16 h-1 bg-primary rounded-full"></div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
-                Our Mission to <br /><span className="text-primary">Change the World</span>
+                Our Mission to <br /><span className="text-primary">Ignite Change and Transform Lives</span>
               </h2>
             </div>
             <div className="flex-1">
