@@ -12,19 +12,39 @@ export default function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const form = e.target as HTMLFormElement;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      subject: (form.elements.namedItem("subject") as HTMLInputElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+    try {
+      const res = await fetch(`${import.meta.env.BASE_URL}api/contact`.replace(/\/+/g, "/").replace(":/", "://"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Failed");
       toast({
-        title: "Message Sent Successfully!",
+        title: "Message Sent!",
         description: "Thank you for reaching out. Our team will get back to you shortly.",
         duration: 5000,
       });
-      (e.target as HTMLFormElement).reset();
-    }, 1500);
+      form.reset();
+    } catch {
+      toast({
+        title: "Failed to send message",
+        description: "Please try again or email us directly at info@manuelamissions.com.",
+        duration: 6000,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
