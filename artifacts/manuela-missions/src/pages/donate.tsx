@@ -275,12 +275,17 @@ export default function Donate() {
                       </TabsContent>
 
                       <TabsContent value="bank">
-                        <div className="bg-primary/5 p-6 rounded-xl border border-primary/20 space-y-4">
-                          <p className="text-sm text-muted-foreground mb-4">
-                            Please transfer your donation to the following {currency} account:
+                        <div className="space-y-4">
+                          <p className="text-sm text-muted-foreground">
+                            Transfer to either account below. Use whichever currency is most convenient for you.
                           </p>
-                          <div className="space-y-3">
-                            {bankDetails[currency].map((detail, idx) => (
+
+                          {/* NGN Account */}
+                          <div className="bg-primary/5 p-5 rounded-xl border border-primary/20 space-y-3">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xs font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 rounded-full">Nigerian Naira · NGN</span>
+                            </div>
+                            {bankDetails.NGN.map((detail, idx) => (
                               <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-lg border border-border">
                                 <span className="text-sm font-medium text-muted-foreground">{detail.label}</span>
                                 <div className="flex items-center gap-3">
@@ -296,7 +301,35 @@ export default function Donate() {
                               </div>
                             ))}
                           </div>
-                          <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
+
+                          {/* USD Account */}
+                          <div className="bg-secondary/5 p-5 rounded-xl border border-secondary/20 space-y-3">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xs font-bold uppercase tracking-wider text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">US Dollar · USD</span>
+                            </div>
+                            {bankDetails.USD.map((detail, idx) => (
+                              <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-lg border border-border">
+                                <span className="text-sm font-medium text-muted-foreground">{detail.label}</span>
+                                <div className="flex items-center gap-3">
+                                  <span className="font-bold text-foreground">{detail.value}</span>
+                                  <button
+                                    onClick={() => copyToClipboard(detail.value, detail.label)}
+                                    className="text-primary hover:text-primary/70 bg-primary/10 p-1.5 rounded-md transition-colors"
+                                    title="Copy"
+                                  >
+                                    <Copy className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* GBP note */}
+                          <div className="bg-muted/50 p-4 rounded-xl border border-border text-sm text-muted-foreground">
+                            <span className="font-semibold text-foreground">GBP donations:</span> Please email <strong>donations@manuelamissions.com</strong> for GBP bank transfer details.
+                          </div>
+
+                          <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
                             After completing your transfer, please send your proof of payment to <strong>donations@manuelamissions.com</strong> and we will issue your receipt promptly.
                           </div>
                         </div>
