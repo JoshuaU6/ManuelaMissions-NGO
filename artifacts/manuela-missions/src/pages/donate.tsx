@@ -33,8 +33,9 @@ const bankDetails = {
     { label: "Account No", value: "0267551823" },
   ],
   GBP: [
-    { label: "Contact", value: "donations@manuelamissions.com" },
-    { label: "Note", value: "Email us for GBP bank transfer details" },
+    { label: "Bank", value: "GTBank" },
+    { label: "Account Name", value: "Manuela Missions" },
+    { label: "Account No", value: "0267551380" },
   ],
 };
 
@@ -324,9 +325,26 @@ export default function Donate() {
                             ))}
                           </div>
 
-                          {/* GBP note */}
-                          <div className="bg-muted/50 p-4 rounded-xl border border-border text-sm text-muted-foreground">
-                            <span className="font-semibold text-foreground">GBP donations:</span> Please email <strong>donations@manuelamissions.com</strong> for GBP bank transfer details.
+                          {/* GBP Account */}
+                          <div className="bg-red-50/60 p-5 rounded-xl border border-red-200/60 space-y-3">
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-xs font-bold uppercase tracking-wider text-red-700 bg-red-100 px-2 py-0.5 rounded-full">British Pound · GBP</span>
+                            </div>
+                            {bankDetails.GBP.map((detail, idx) => (
+                              <div key={idx} className="flex justify-between items-center bg-white p-3 rounded-lg border border-border">
+                                <span className="text-sm font-medium text-muted-foreground">{detail.label}</span>
+                                <div className="flex items-center gap-3">
+                                  <span className="font-bold text-foreground">{detail.value}</span>
+                                  <button
+                                    onClick={() => copyToClipboard(detail.value, detail.label)}
+                                    className="text-primary hover:text-primary/70 bg-primary/10 p-1.5 rounded-md transition-colors"
+                                    title="Copy"
+                                  >
+                                    <Copy className="w-4 h-4" />
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
                           </div>
 
                           <div className="p-4 bg-yellow-50 border border-yellow-200 rounded-lg text-sm text-yellow-800">
