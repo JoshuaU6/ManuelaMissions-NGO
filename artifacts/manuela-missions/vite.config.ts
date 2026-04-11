@@ -40,20 +40,19 @@ export default defineConfig({
     emptyOutDir: true,
   },
   server: {
-    port,
-    strictPort: false,
-    host: "0.0.0.0",
-    allowedHosts: true,
+  port,
+  strictPort: false,
+  host: "0.0.0.0",
+  allowedHosts: true,
+    proxy: {
+      "/api": {
+        target: `http://localhost:${process.env.API_PORT || 8080}`,
+        changeOrigin: true,
+      },
+    },
     fs: {
       strict: true,
       deny: ["**/.*"],
-    },
-    proxy: {
-      "/api": {
-        target: "http://localhost:8080",
-        changeOrigin: true,
-        secure: false,
-      },
     },
   },
   preview: {

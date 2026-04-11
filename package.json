@@ -16,6 +16,9 @@
     "typecheck:libs": "tsc --build",
     "typecheck": "npm run typecheck:libs"
   },
+  "dependencies": {
+    "resend": "^6.10.0"
+  },
   "devDependencies": {
     "concurrently": "^9.1.2",
     "typescript": "~5.9.2",
