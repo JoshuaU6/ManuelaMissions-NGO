@@ -5,10 +5,11 @@
   "private": true,
   "workspaces": [
     "artifacts/*",
-    "lib/*"
+    "lib/*",
+    "scripts"
   ],
   "scripts": {
-    "dev": "npm run dev --workspace=artifacts/manuela-missions & npm run dev --workspace=artifacts/api-server",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
     "dev:web": "npm run dev --workspace=artifacts/manuela-missions",
     "dev:api": "npm run dev --workspace=artifacts/api-server",
     "build": "npm run build --workspace=artifacts/manuela-missions && npm run build --workspace=artifacts/api-server",
@@ -16,6 +17,7 @@
     "typecheck": "npm run typecheck:libs"
   },
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "typescript": "~5.9.2",
     "prettier": "^3.8.1"
   }
