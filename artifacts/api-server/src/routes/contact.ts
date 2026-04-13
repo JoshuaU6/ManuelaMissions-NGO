@@ -12,6 +12,8 @@ router.post("/contact", async (req, res) => {
   }
 
   const apiKey = process.env["RESEND_API_KEY"];
+  const fromEmail = process.env["RESEND_FROM_EMAIL"] ?? "Manuela Missions Website <onboarding@resend.dev>";
+  const toEmail = process.env["RESEND_TO_EMAIL"] ?? "info@manuelamissions.com";
 
   if (!apiKey) {
     res.status(500).json({ error: "Email service is not configured." });
@@ -21,9 +23,9 @@ router.post("/contact", async (req, res) => {
   const resend = new Resend(apiKey);
 
   try {
-    const { error } = await resend.emails.send({
-      from: "Manuela Missions Website <onboarding@resend.dev>",
-      to: "info@manuelamissions.com",
+    const sendResult = await resend.emails.send({
+      from: fromEmail,
+      to: toEmail,
       replyTo: email,
       subject: `[Contact Form] ${subject}`,
       html: `
@@ -46,13 +48,14 @@ router.post("/contact", async (req, res) => {
       `,
     });
 
-    if (error) {
-      console.error("Resend error:", error);
+    if (!sendResult || !sendResult.id) {
+      console.error("Resend error: invalid send result", sendResult);
       res.status(500).json({ error: "Failed to send message. Please try again." });
       return;
     }
 
-    res.status(200).json({ success: true });
+    console.info("Resend email sent", { messageId: sendResult.id, to: toEmail, from: fromEmail });
+    res.status(200).json({ success: true, messageId: sendResult.id });
   } catch (err) {
     console.error("Contact route error:", err);
     res.status(500).json({ error: "Failed to send message. Please try again." });
