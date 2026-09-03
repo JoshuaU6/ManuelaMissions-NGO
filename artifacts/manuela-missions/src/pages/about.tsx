@@ -10,6 +10,9 @@ const team = [
   { name: "Joshua Unoarumhi", role: "Chief Technology Officer", initials: "JU", photo: "/team-joshua.png" },
   { name: "Grace Izinrein", role: "Head of Finance", initials: "GI", photo: "/team-grace.jpg" },
   { name: "Debra Unoarumhi", role: "Brand & Communications Lead", initials: "DU", photo: "/team-debra.jpg" },
+  { name: "Olumide Savage", role: "Project Manager", initials: "OS", photo: "/team-olumide.jpg" },
+  { name: "Ugo Oyewola", role: "Director of Donor Advising", initials: "UO", photo: "/team-ugo.jpg" },
+  { name: "Manuela Unoarumhi", role: "Strategic Advisor", initials: "MU", photo: null },
 ];
 
 const avatarColors = [
@@ -102,7 +105,7 @@ export default function About() {
                   {member.photo ? (
                     <img src={member.photo} alt={member.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   ) : (
-                    <div className={`w-full h-full bg-gradient-to-br ${avatarColors[i]} flex items-center justify-center`}>
+                    <div className={`w-full h-full bg-gradient-to-br ${avatarColors[i % avatarColors.length]} flex items-center justify-center`}>
                       <span className="text-white text-4xl font-bold tracking-wide">{member.initials}</span>
                     </div>
                   )}
